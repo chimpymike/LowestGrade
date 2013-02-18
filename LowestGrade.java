@@ -32,4 +32,9 @@ class LowestGrade {
 	}
 	// Return the ArrayList as a primitive array
 	return lowestRemoved.toArray();
+    }
+
+    public static String arrayPrint(int [] numbers) {
+	return Arrays.toString(numbers);
+    }
 }
