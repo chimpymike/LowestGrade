@@ -1,5 +1,4 @@
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 class LowestGrade {
     public static void main(String [] args) {
@@ -15,23 +14,29 @@ class LowestGrade {
     }
 
     public static int [] removeLowest(int ... grades) {
-	// ArrayList to hold the array with the lowest grade removed
-	List<Integer> lowestRemoved = new ArrayList<Integer>();
-	// Integer to track the lowest grade, initialized to the first grade
-	int lowestGrade = grades[0];
+	// If there is only 1 or 0 grades
+	// don't remove anything, just return the grades array
+	if (grades.length <= 1) {
+	    return grades;
+	} else {
+	    // array to hold the grades with the lowest grade removed
+	    int [] lowestRemoved = new int[grades.length-1];
+	    // Integer to track the lowest grade, initialized to the first grade
+	    int lowestGrade = grades[0];
 
-	// Iterate through the list of grades,
-	// adding all but the lowest grade to the ArrayList
-	for (int i = 1; i < grades.length; i++) {
-	    if (grades[i] < lowestGrade) {
-		lowestRemoved.add(lowestGrade);
-		lowestGrade = grades[i];
-	    } else {
-		lowestRemoved.add(grades[i]);
+	    // Iterate through the list of grades,
+	    // adding all but the lowest grade to the ArrayList
+	    for (int i = 1; i < grades.length; i++) {
+		if (grades[i] < lowestGrade) {
+		    lowestRemoved[i-1] = lowestGrade;
+		    lowestGrade = grades[i];
+		} else {
+		    lowestRemoved[i-1] = grades[i];
+		}
 	    }
+	    // Return the array with the lowest grade removed
+	    return lowestRemoved;
 	}
-	// Return the ArrayList as a primitive array
-	return lowestRemoved.toArray();
     }
 
     public static String arrayPrint(int [] numbers) {
